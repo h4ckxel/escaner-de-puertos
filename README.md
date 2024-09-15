@@ -41,15 +41,15 @@ pip install tkinter
 
 1. Clona este repositorio:
    ```bash
-   git clone https://github.com/h4ckxel/port-scanner-h4ckxel.git
+   git clone https://github.com/h4ckxel/escaner-de-puertos.git
    ```
 2. Navega hasta el directorio del proyecto:
    ```bash
-   cd port-scanner-h4ckxel
+   cd escaner-de-puertos
    ```
 3. Ejecuta el script principal:
    ```bash
-   python port_scanner.py
+   python scanner.py
    ```
 
 ### GUI (Interfaz Gráfica)
@@ -115,7 +115,7 @@ Si te gustaría contribuir a este proyecto, por favor visita mi [GitHub](https:/
 
 ---
 
-## ✨ Créditos
+## Créditos
 
 **Modificado por H4ckxel** — Proyecto original inspirado en la personalización de herramientas de red para entornos de hacking.
 
