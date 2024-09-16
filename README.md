@@ -18,8 +18,11 @@ Este proyecto es una herramienta gráfica de escaneo de puertos construida con *
 - Personalizable: ingresa la dirección IP y el rango de puertos que deseas escanear.
 - Experiencia optimizada con resultados en tiempo real.
 
-![Scan Ports](https://media.giphy.com/media/QHE5gWI0QjqF2/giphy.gif)
+<div align="center">
 
+![Scan Ports](https://i.gifer.com/EgVJ.gif)
+
+</div>
 ---
 
 ## 📋 ¿Cómo usarlo?
