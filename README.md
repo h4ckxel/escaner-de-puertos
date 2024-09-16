@@ -3,7 +3,7 @@
 # ⚡ Escáner de Puertos - H4ckxel⚡
 
 
-<img src="https://i.imgur.com/NQ0Mdvt.png">
+<img src="https://i.imgur.com/NQ0Mdvt.png" width="50%" height="auto"/>
 
 > "Port Scanning made easy by **H4ckxel**"
 </div>
@@ -23,6 +23,7 @@ Este proyecto es una herramienta gráfica de escaneo de puertos construida con *
 ![Scan Ports](https://i.gifer.com/EgVJ.gif)
 
 </div>
+
 ---
 
 ## 📋 ¿Cómo usarlo?
