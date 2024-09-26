@@ -34,7 +34,7 @@ echo -e "${CYAN}----------------------- Escáner de Puertos --------------------
 
 # Función para escanear un puerto específico
 scan_port() {
-    timeout 0.1 bash -c "</dev/tcp/$1/$2" &>/dev/null && echo -e "${LIME}Puerto $2 está abierto${RESET}" &
+    timeout 0.00001 bash -c "</dev/tcp/$1/$2" &>/dev/null && echo -e "${LIME}Puerto $2 está abierto${RESET}" &
 }
 
 # Función para iniciar el escaneo de puertos
