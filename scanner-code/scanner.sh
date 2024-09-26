@@ -29,7 +29,7 @@ EOF
 
 # Función para escanear un puerto específico
 scan_port() {
-    timeout 0.5 bash -c "</dev/tcp/$1/$2" &>/dev/null && echo -e "${LIME}Puerto $2 está abierto${RESET}" || echo -e "${RED}Puerto $2 está cerrado${RESET}"
+    timeout 0.5 bash -c "</dev/tcp/$1/$2" &>/dev/null && echo -e "${LIME}Puerto $2 está abierto${RESET}" &
 }
 
 # Función para iniciar el escaneo de puertos
@@ -38,25 +38,24 @@ start_scan() {
     start_port="$2"
     end_port="$3"
     
-    echo -e "${CYAN}Escaneando $ip desde el puerto $start_port hasta el puerto $end_port${RESET}"
+    echo -e "${CYAN}Escaneando $ip desde el puerto $start_port hasta el puerto $end_port...${RESET}"
     
     for ((port=start_port; port<=end_port; port++)); do
-        scan_port "$ip" "$port" &
+        scan_port "$ip" "$port"
     done
     wait
 }
 
-# Comprobación de entrada del usuario
-if [ $# -ne 3 ]; then
-    echo -e "${RED}Uso: $0 <Dirección IP> <Puerto Inicial> <Puerto Final>${RESET}"
-    exit 1
-fi
+# Pedir al usuario que ingrese la IP y los puertos
+read -p "Ingrese la dirección IP a escanear: " ip
+read -p "Ingrese el puerto inicial: " start_port
+read -p "Ingrese el puerto final: " end_port
 
 # Mostrar arte ASCII
 echo -e "${GREEN}${ascii_art}${RESET}"
 
 # Llamar a la función de escaneo
-start_scan "$1" "$2" "$3"
+start_scan "$ip" "$start_port" "$end_port"
 
 # Tag final
 echo -e "${RED}--------------------> Modified by </H4ckxel> <-----------------${RESET}"
