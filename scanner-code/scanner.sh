@@ -34,17 +34,31 @@ echo -e "${CYAN}----------------------- Escáner de Puertos --------------------
 
 # Función para escanear un puerto específico
 scan_port() {
-    timeout 0.00001 bash -c "</dev/tcp/$1/$2" &>/dev/null && echo -e "${LIME}Puerto $2 está abierto${RESET}" &
+    timeout 0.1 bash -c "</dev/tcp/$1/$2" &>/dev/null && echo -e "${LIME}Puerto $2 está abierto${RESET}" &
 }
 
-# Función para iniciar el escaneo de puertos
+# Función para iniciar el escaneo de puertos de manera paralela
 start_scan() {
     ip="$1"
     echo -e "${CYAN}Escaneando todos los puertos de $ip...${RESET}"
     
+    # Número de hilos que se ejecutarán en paralelo
+    max_jobs=500  # Ajustar según la capacidad del sistema
+    active_jobs=0
+
+    # Iterar a través de los puertos
     for port in {1..65535}; do
-        scan_port "$ip" "$port"
+        scan_port "$ip" "$port" &
+        active_jobs=$((active_jobs + 1))
+
+        # Controlar el número máximo de trabajos en paralelo
+        if [[ "$active_jobs" -ge "$max_jobs" ]]; then
+            wait -n  # Esperar a que al menos un trabajo termine antes de continuar
+            active_jobs=$((active_jobs - 1))
+        fi
     done
+    
+    # Esperar a que todos los trabajos terminen
     wait
 }
 
